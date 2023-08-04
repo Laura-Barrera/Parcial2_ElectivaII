@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcial Laura Barrera</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -22,7 +22,7 @@
                             <a class="nav-link" href="/">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/add">Agregar</a>
+                            <a class="nav-link" href="/add">Agregar o Buscar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/view">Visualizar</a>
@@ -33,15 +33,90 @@
         </nav>
     </div><br><br>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                Parcial Electiva II consumo API
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Add New Dish</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="id" aria-label="id" id="idDish">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="name" aria-label="name" id="name">
+                        </div>
+                        <div class="col">
+                          <input type="number" class="form-control" placeholder="calories" aria-label="calories" id="calories">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col">
+                            <select class="form-control" placeholder="isVegetarian" aria-label="isVegetarian" id="isVegetarian">
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                          <input type="number" class="form-control" placeholder="value" aria-label="value" id="value">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="comments" aria-label="comments" id="comments">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-5"><button class="btn btn-primary" id="botonEnvioPlato">Guardar</button></div>
+                        <div class="col-2"></div>
+                        <div class="col-5"><button class="btn btn-primary" id="Limpiar" onclick="limpiar()">Limpiar</button></div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    <h1>Search Dish</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8">
+                            <input type="text" class="form-control" placeholder="idPlato" aria-label="idPlato" id="idPlato">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary" id="botonLimp" onclick="limpiar()">Limpiar</button>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary" id="botonBuscar" onclick="search()">Buscar</button>
+                        </div>
+                    </div><br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Object Id</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Calories</th>
+                                <th>Is Vegetarian</th>
+                                <th>Value</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody id="datos">
+                            <tr>
+                                <td id="ObjS"></td>
+                                <td id="idS"></td>
+                                <td id="nameS"></td>
+                                <td id="caloriesS"></td>
+                                <td id="vegetarianS"></td>
+                                <td id="valueS"></td>
+                                <td id="commentS"></td>
+                            </tr>
+                        </tbody>
+                </div>
             </div>
         </div>
-    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
     <footer class="footer" style="background-color: aquamarine;"></footer>
 </body>
 </html>

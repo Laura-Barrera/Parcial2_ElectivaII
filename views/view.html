@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcial Laura Barrera</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="scripts.js"></script>
 </head>
 <body>
     <div class="container">
@@ -22,7 +23,7 @@
                             <a class="nav-link" href="/">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/add">Agregar</a>
+                            <a class="nav-link" href="/add">Agregar o Buscar</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/view">Visualizar</a>
@@ -39,25 +40,56 @@
                 Parcial Electiva II consumo API
             </div>
             <div class="card-body">
-                <div class="table-responsive" id="mydatatable-container">
-                    <table id="tablaVisualizacion" class="table table-striped table-bordered ">
-                        <thead>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <tfoot class="text-center" style="background: #d78aea; color: black">
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Object Id</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Calories</th>
+                            <th>Is Vegetarian</th>
+                            <th>Value</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datos">
+                        <script>
+                            loadDishes()
+                                .then(res => {
+                                    if(res.state){
+                                        res.data.forEach(plato => {
+                                            const row = document.createElement('tr')
+                                            const obj_id = document.createElement('td')
+                                            obj_id.append(document.createTextNode(`${plato._id}`))
+                                            row.append(obj_id)
+                                            const col_id = document.createElement('td')
+                                            col_id.append(document.createTextNode(`${plato.idDish}`))
+                                            row.append(col_id)
+                                            const name = document.createElement('td')
+                                            name.append(document.createTextNode(`${plato.name}`))
+                                            row.append(name)
+                                            const calories = document.createElement('td')
+                                            calories.append(document.createTextNode(`${plato.calories}`))
+                                            row.append(calories)
+                                            const isVegetarian = document.createElement('td')
+                                            isVegetarian.append(document.createTextNode(`${plato.isVegetarian}`))
+                                            row.append(isVegetarian)
+                                            const value = document.createElement('td')
+                                            value.append(document.createTextNode(`${plato.value}`))
+                                            row.append(value)
+                                            const comments = document.createElement('td')
+                                            comments.append(document.createTextNode(`${plato.comments}`))
+                                            row.append(comments)
+                                            document.getElementById('datos').append(row)
+                                        });
+                                    } else {
+                                        console.log('Algo fallo')
+                                    }
+                                })
+                                .catch(err => console.log(err))
+                        </script>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

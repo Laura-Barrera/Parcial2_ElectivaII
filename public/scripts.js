@@ -34,11 +34,10 @@ document.getElementById('botonEnvioPlato').addEventListener('click',()=>{
         body: newDish()
     })
     .then(resp => {
-        if(resp.status = 208){
+        if(resp.status == 208){
             alert('Ya existe un plato con el mismo id')
-            throw new Error('Plato duplicado');
-        } else{
-            resp.json()
+        }else{
+            return resp.json()
         }
     })
     .then(resp => {
